@@ -80,7 +80,7 @@ fn test_command() -> Result<SubmissionResponse, String> {
             "[build]".yellow(),
             "If you don't see logs for 60s+, please contact us at batman@dotcodeschool.com".blue()
         );
-        
+
         let build_output = Command::new("cargo")
             .arg("build")
             // .arg("--color=always")
@@ -128,7 +128,11 @@ fn test_command() -> Result<SubmissionResponse, String> {
     //
     // [tester::rsm_l2c3] Running tests for Lesson 2 - Chapter 3 (Creating a Balances Pallet)
     // [tester::rsm_l2c3] $ cargo run --quiet --release -- "$@"
-    println!("{} {}", "[tester::rsm_l2c3]".yellow(), "Running tests for Lesson 2 - Chapter 3 (Creating a Balances Pallet)".blue());
+    println!(
+        "{} {}",
+        "[tester::rsm_l2c3]".yellow(),
+        "Running tests for Lesson 2 - Chapter 3 (Creating a Balances Pallet)".blue()
+    );
     println!("{} {}", "[tester::rsm_l2c3]".yellow(), "$ cargo run".blue());
     let mut compile_output = Command::new("cargo")
         .arg("run")
@@ -148,11 +152,19 @@ fn test_command() -> Result<SubmissionResponse, String> {
             let stderr = compile_log.stderr.take().expect("Failed to capture stderr");
 
             BufReader::new(stdout).lines().for_each(|line| {
-                println!("{} {}", "[your_program]".yellow().to_string(), line.unwrap());
+                println!(
+                    "{} {}",
+                    "[your_program]".yellow().to_string(),
+                    line.unwrap()
+                );
             });
 
             BufReader::new(stderr).lines().for_each(|line| {
-                println!("{} {}", "[your_program]".yellow().to_string(), line.unwrap());
+                println!(
+                    "{} {}",
+                    "[your_program]".yellow().to_string(),
+                    line.unwrap()
+                );
             });
 
             let joined_message = response
