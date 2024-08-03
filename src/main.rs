@@ -134,7 +134,7 @@ fn test_command() -> Result<SubmissionResponse, String> {
         "Running tests for Lesson 2 - Chapter 3 (Creating a Balances Pallet)".blue()
     );
     println!("{} {}", "[tester::rsm_l2c3]".yellow(), "$ cargo run".blue());
-    let mut compile_output = Command::new("cargo")
+    let mut program_output = Command::new("cargo")
         .arg("run")
         // .arg("--color=always")
         .arg("--quiet")
@@ -146,10 +146,10 @@ fn test_command() -> Result<SubmissionResponse, String> {
         .stderr(Stdio::piped())
         .spawn();
 
-    match compile_output {
-        Ok(mut compile_log) => {
-            let stdout = compile_log.stdout.take().expect("Failed to capture stdout");
-            let stderr = compile_log.stderr.take().expect("Failed to capture stderr");
+    match program_output {
+        Ok(mut program_log) => {
+            let stdout = program_log.stdout.take().expect("Failed to capture stdout");
+            let stderr = program_log.stderr.take().expect("Failed to capture stderr");
 
             BufReader::new(stdout).lines().for_each(|line| {
                 println!(
